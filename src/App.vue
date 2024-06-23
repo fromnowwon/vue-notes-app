@@ -27,6 +27,10 @@ const closeModal = () => {
 	newNote.value = "";
 	errorMessage.value = "";
 };
+
+const deleteNote = (id) => {
+	notes.value = notes.value.filter((note) => note.id !== id);
+};
 </script>
 
 <template>
@@ -53,7 +57,12 @@ const closeModal = () => {
 				<button @click="showModal = true">+</button>
 			</header>
 			<div class="cards-container">
-				<Card v-for="note in notes" :key="note.id" :note="note" />
+				<Card
+					v-for="note in notes"
+					:key="note.id"
+					:note="note"
+					@delete="deleteNote"
+				/>
 			</div>
 		</div>
 	</main>
