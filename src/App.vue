@@ -4,15 +4,27 @@ import { ref } from "vue";
 const showModal = ref(false);
 const notes = ref([]);
 const newNote = ref("");
+const errorMessage = ref("");
 
 const addNote = () => {
+	if (!newNote.value.length)
+		return (errorMessage.value = "메모를 입력해주세요!!");
+
 	notes.value.push({
 		id: Math.floor(Math.random() * 1000000),
 		text: newNote.value,
 		date: new Date(),
 	});
+
 	showModal.value = false;
 	newNote.value = "";
+	errorMessage.value = "";
+};
+
+const closeModal = () => {
+	showModal.value = false;
+	newNote.value = "";
+	errorMessage.value = "";
 };
 </script>
 
@@ -27,9 +39,10 @@ const addNote = () => {
 					rows="10"
 					cols="30"
 				></textarea>
+				<p class="error-message" v-if="errorMessage">{{ errorMessage }}</p>
 				<div class="btn-box">
 					<button class="add-btn" @click="addNote">추가</button>
-					<button class="close-btn" @click="showModal = false">취소</button>
+					<button class="close-btn" @click="closeModal">취소</button>
 				</div>
 			</div>
 		</div>
