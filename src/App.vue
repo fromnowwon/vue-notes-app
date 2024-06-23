@@ -31,6 +31,13 @@ const closeModal = () => {
 const deleteNote = (id) => {
 	notes.value = notes.value.filter((note) => note.id !== id);
 };
+
+const updateNote = (updatedNote) => {
+	const index = notes.value.findIndex((note) => note.id === updatedNote.id);
+	if (index !== -1) {
+		notes.value[index] = updatedNote;
+	}
+};
 </script>
 
 <template>
@@ -62,6 +69,7 @@ const deleteNote = (id) => {
 					:key="note.id"
 					:note="note"
 					@delete="deleteNote"
+					@update="updateNote"
 				/>
 			</div>
 		</div>
