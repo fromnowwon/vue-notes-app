@@ -1,0 +1,17 @@
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+	note: {
+		type: Object,
+		required: true,
+	},
+});
+</script>
+
+<template>
+	<div class="card">
+		<p class="main-text">{{ note.text }}</p>
+		<p class="date">{{ note.date }}</p>
+	</div>
+</template>

@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import Card from "./components/Card.vue";
 
 const showModal = ref(false);
 const notes = ref([]);
@@ -52,10 +53,7 @@ const closeModal = () => {
 				<button @click="showModal = true">+</button>
 			</header>
 			<div class="cards-container">
-				<div class="card" v-for="note in notes" :key="note.id">
-					<p class="main-text">{{ note.text }}</p>
-					<p class="date">{{ note.date }}</p>
-				</div>
+				<Card v-for="note in notes" :key="note.id" :note="note" />
 			</div>
 		</div>
 	</main>
