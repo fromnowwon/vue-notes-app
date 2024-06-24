@@ -12,7 +12,7 @@ const errorMessage = ref("");
 
 const addNote = () => {
 	if (!newNote.value.trim())
-		return (errorMessage.value = "메모를 입력해주세요!!");
+		return (errorMessage.value = "내용을 입력해주세요!");
 
 	emits("add-note", {
 		id: Math.floor(Math.random() * 1000000),
@@ -45,8 +45,10 @@ const closeModal = () => {
 			></textarea>
 			<p class="error-message" v-if="errorMessage">{{ errorMessage }}</p>
 			<div class="btn-box">
-				<button class="add-btn" @click="addNote">추가</button>
-				<button class="close-btn" @click="closeModal">취소</button>
+				<button class="add-btn btn-primary" @click="addNote">추가</button>
+				<button class="close-btn btn-secondary" @click="closeModal">
+					취소
+				</button>
 			</div>
 		</div>
 	</div>
@@ -86,28 +88,8 @@ const closeModal = () => {
 	border-radius: 5px;
 }
 
-.btn-box {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 5px;
-}
-
-.btn-box button {
-	border: 0;
+.error-message {
 	font-size: 0.875rem;
-	margin: 0 5px;
-	padding: 4px 14px;
-	border-radius: 3px;
-	cursor: pointer;
-}
-
-.add-btn {
-	background-color: #333;
-	color: #fff;
-}
-
-.close-btn {
-	background-color: #e5e5e5;
+	color: red;
 }
 </style>
