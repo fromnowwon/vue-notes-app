@@ -1,4 +1,10 @@
 @import "./base.css";
+textarea {
+	resize: none;
+	overflow: auto;
+	border: 1px solid #bbb;
+	border-radius: 5px;
+}
 
 /* Button style */
 .btn-box {
@@ -8,13 +14,15 @@
 	margin-top: 6px;
 }
 
-.btn-box button {
+button {
+	display: inline-block;
 	border: 0;
 	font-size: 0.875rem;
 	margin: 0 5px;
 	padding: 4px 14px;
 	border-radius: 3px;
 	cursor: pointer;
+	transition: all ease 0.2s;
 }
 
 .btn-primary {
@@ -22,6 +30,22 @@
 	color: #fff;
 }
 
+.btn-primary:hover {
+	background-color: aquamarine;
+}
+
 .btn-secondary {
 	background-color: #e5e5e5;
+}
+
+.btn-secondary:hover {
+	background-color: #eee;
+}
+
+.btn-underline {
+	padding: 5px 3px 2px;
+	font-size: 0.75rem;
+	background-color: transparent;
+	border-radius: 0;
+	border-bottom: 1px solid #333;
 }
