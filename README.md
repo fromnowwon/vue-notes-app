@@ -1,6 +1,8 @@
-# Notes App
+# Notes App with Vue
 
 간단한 메모를 작성하고 관리할 수 있는 Vue.js 기반의 웹 애플리케이션입니다.
+
+- [DEMO](https://fromnowwon.github.io/vue-notes-app/)
 
 ![프로젝트 로고](./src/assets/images/sample.png)
 
