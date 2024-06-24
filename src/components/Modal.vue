@@ -9,15 +9,26 @@ const emits = defineEmits(["add-note", "update:show-modal"]);
 
 const newNote = ref("");
 const errorMessage = ref("");
+const palette = [
+	"hsl(0, 100%, 75%)",
+	"hsl(60, 100%, 75%)",
+	"hsl(120, 100%, 75%)",
+	"hsl(180, 100%, 75%)",
+	"hsl(240, 100%, 75%)",
+	"hsl(300, 100%, 75%)",
+];
 
 const addNote = () => {
 	if (!newNote.value.trim())
 		return (errorMessage.value = "내용을 입력해주세요!");
 
+	const selectedColorValue = selectedColor.value || getRandomColor();
+
 	emits("add-note", {
 		id: Math.floor(Math.random() * 1000000),
 		text: newNote.value.trim(),
 		date: new Date(),
+		backgroundColor: selectedColorValue,
 	});
 
 	closeModal();
@@ -27,6 +38,17 @@ const closeModal = () => {
 	emits("update:show-modal", false);
 	newNote.value = "";
 	errorMessage.value = "";
+	selectedColor.value = "";
+};
+
+const selectedColor = ref("");
+
+function getRandomColor() {
+	return "hsl(" + Math.random() * 360 + ", 100%, 75%)";
+}
+
+const selectColor = (color) => {
+	selectedColor.value = color;
 };
 </script>
 
@@ -34,6 +56,16 @@ const closeModal = () => {
 	<div class="overlay" v-show="showModal">
 		<div class="modal">
 			<h2 class="tit">새 메모</h2>
+			<div class="color-palette">
+				<div
+					v-for="color in palette"
+					:key="color"
+					:style="{ backgroundColor: color }"
+					@click="selectColor(color)"
+				>
+					<span v-if="selectedColor === color" class="check-mark">✓</span>
+				</div>
+			</div>
 			<textarea
 				v-model.trim="newNote"
 				name="note"
@@ -84,12 +116,38 @@ const closeModal = () => {
 .note-area {
 	width: 100%;
 	padding: 10px;
-	border: 1px solid #bbb;
-	border-radius: 5px;
 }
 
 .error-message {
 	font-size: 0.875rem;
 	color: red;
+}
+
+.color-palette {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.color-palette div {
+	position: relative;
+	width: 27px;
+	height: 27px;
+	border-radius: 50%;
+	cursor: pointer;
+	margin-right: 5px;
+}
+
+.color-palette div:last-child {
+	margin-right: 0;
+}
+
+.check-mark {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 18px;
 }
 </style>
