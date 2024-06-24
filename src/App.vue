@@ -29,7 +29,7 @@ const updateNote = (updatedNote) => {
 		<div class="container">
 			<header>
 				<h1>Notes</h1>
-				<button @click="showModal = true">+</button>
+				<button @click="showModal = true" class="add-btn">+</button>
 			</header>
 			<div class="cards-container">
 				<Card
@@ -44,4 +44,44 @@ const updateNote = (updatedNote) => {
 	</main>
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+	width: 100vw;
+	height: 100vh;
+}
+
+.container {
+	max-width: 1000px;
+	padding: 10px;
+	margin: 0 auto;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+h1 {
+	font-size: 7rem;
+}
+
+.cards-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.add-btn {
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	background-color: #333;
+	font-size: 34px;
+	color: #fff;
+	border-radius: 50%;
+}
+
+.add-btn:hover {
+	background-color: aquamarine;
+}
+</style>
