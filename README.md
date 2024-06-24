@@ -4,7 +4,7 @@
 
 - [DEMO](https://fromnowwon.github.io/vue-notes-app/)
 
-![프로젝트 로고](./src/assets/images/sample.png)
+![프로젝트 로고](./src/assets/images/sample1.png)
 
 ## 주요 기능
 
