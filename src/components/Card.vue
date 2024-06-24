@@ -155,7 +155,6 @@ const hadleToggleMenu = () => {
 	text-align: center;
 	background-color: aliceblue;
 	cursor: pointer;
-	transition: all ease 0.2s;
 }
 
 .toggle-menu-list li + li {
